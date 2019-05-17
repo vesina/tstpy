@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A Slide In Dashboard</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#dashboard {
+	width: 220px;
+	background-color: rgb(110,138,195);
+	padding: 20px 20px 0 20px;
+	position: absolute;
+	left: -212px;
+	z-index: 200;
+}
+#dashboard img {
+	margin-bottom: 20px;
+	border: 1px solid rgb(0,0,0);
+}
+</style>
+
+     <link href="Stylesheet1.css" rel="stylesheet" type="text/css" />
+    
+    <script src="jquery-1.11.0.min.js" type="text/javascript">
+    </script>
+<script src="jquery.easing.1.3.js"></script>
+<script src="jquery.color.js"></script>
+    <script src="dataModul.js" type="text/javascript"> </script>
+<script>
+$(document).ready(function() {
+  $('#dashboard').hover(
+     function() {
+		$(this).stop().animate(
+		{
+			left: '0',
+			backgroundColor: 'rgb(255,255,255)'
+		},
+		500,
+		'easeInSine'
+		); // end animate
+	 }, 
+	 function() {
+		 $(this).stop().animate(
+		{
+			left: '-212px',
+			backgroundColor: 'rgb(110,138,195)'
+		},
+		1500,
+		'easeOutBounce'
+		); // end animate
+	 }
+  ); // end hover
+}); // end ready
+</script>
+      <script type="text/javascript">
+          var players = "xmlPlayers.xml";
+          var xmlfile;
+          $(document).ready(function onload() {
+              xmlfile = loadXMLRoaster(players);
+              buildRoaster(xmlfile);
+          }); // end buildRoster
+          </script>
+    <script>
+        $(document).ready(function() {
+              $('a').mouseover(function () {
+                  $(this).addClass('hover');
+                  return false;
+              });//end add hover
+
+              $('a').mouseout(function () {
+                  $(this).removeClass('hover');
+                  return false;
+              }); // end remove hover
+              $('.Player a[name=remove]').click(function () {
+                  var t = "Delete? " + $(this).siblings('input[type=textbox]').val() + $(this).attr('value');
+                  var q = window.confirm(t);
+                  if (q) {
+                      // $(this).parent().remove();
+                      // $("#line" + $(this).attr('value')).remove();
+                      $('#all').after(document.getElementById("line" + $(this).attr('value')));
+                      document.getElementById("line" + $(this).attr('value')).children('input[type=checkbox]').last().prop('checked', 'checked');
+                  }
+                  return false;
+              });// end remove Player
+
+   
+              $('.iad a[name=insert]').click(function () {
+                  var t = "Add a new player?";
+                  //alert(t);
+                  var q = window.confirm(t);
+                  if (q)
+                      addPlayer(xmlfile);
+
+                  return false;
+              }); // end insert Player
+              $('#all').click(function () {
+                  //alert('ch :' + $(this).attr('value'));
+                  var sourceList = $('#Col1').children('.Player');
+                  var playersList = $('#PlayersList').children('.Player');
+                  var waitList = $('#WaitList').children('.Player');
+                  var teamSize = $('#teamsize').val();
+                  var check = (teamSize - playersList.length);
+                  //alert(check);
+                  sourceList.each(function () {
+                    
+                      if (check <= 0) {
+                          $(this).appendTo('#WaitList');
+                          $(this).children('input:checked').removeAttr('checked');//.prop('checked', false);
+
+                          $(this).children('input[type=textbox]').prop('readonly', true);//.prop('checked', false);
+                      }
+                      else {
+                          $(this).appendTo('#PlayersList');
+                          check--;
+
+                          $(this).children('input[type=textbox]').prop('readonly', true);
+                      }
+                 
+                  });
+              }); // end click all
+                      $('.chR').change(function () {
+                          //var sourceList = parseFloat($('#Col1').children('.Player')) ;
+                          var players = parseFloat($('#PlayersList').children('.Player').length);
+                          // var waitList = parseFloat($('#WaitList').children('.Player').length);
+                          var teamSize = parseFloat($('#teamsize').val());
+
+                 
+                          if ($(this).is(':checked')) {
+                              return false;
+                          }
+                          else {
+                                        
+                              //$(this).change('checked','checked')
+                              if (teamSize - playersList > 0) {
+
+                                  document.getElementById('PlayersList').appendChild(document.getElementById("line" + $(this).attr('value')));
+                                  $(this).prop('checked', true);
+                         
+                         
+                              }
+                              else {
+                                  document.getElementById('WaitList').appendChild(document.getElementById("line" + $(this).attr('value')));
+                                  $(this).prop('checked', false);
+                       
+                              }
+                          }
+                 
+
+                          var totalmin = parseFloat($('#totalmin').val());
+                          var avg = parseInt(teamsize * totalmin / players);
+                          $('#avg').text(avg);
+                          return false;
+                      }); // end chR move available Player to PlayersList
+                  $('.ch').change(function () {
+                      if ($(this).is(':checked')) {
+                          document.getElementById('PlayersList').appendChild(document.getElementById("line" + $(this).attr('value')));
+                          $(this).prop('checked', 'checked');
+                      }
+                      else {
+                          document.getElementById('WaitList').appendChild(document.getElementById("line" + $(this).attr('value')));
+                          $(this).prop('checked', false);
+                      }
+                      return;
+                  }); // end toggle Player in-out
+
+              });// edn adding events
+          
+
+      </script>
+
+</head>
+<body>
+<div class="wrapper">
+<div class="header">
+	<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+</div>
+<div id="dashboard">
+     <input type="checkbox" id="all" class="all"/>
+                <div id="Roster">
+                    
+                </div> 
+</div>
+<div class="content">
+<div class="main">
+<h1>Slide in Dashboard</h1>
+<p>Mouse over the blue stripe on the left edge of this page</p>
+</div>
+</div>
+<div class="footer">
+<p>JavaScript &amp; jQuery: The Missing Manual, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</div>
+</div>
+</body>
+</html>

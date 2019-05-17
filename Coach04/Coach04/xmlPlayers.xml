@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<players>
+  <palyer>
+    <name>John K</name>
+    <timein></timein>
+    <playerid>1</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="2">Brian C</name>
+    <timein></timein>
+    <playerid>2</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="3">Cathy M</name>
+    <timein>15</timein>
+    <playerid>3</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="4">Jason A</name>
+    <timein></timein>
+    <playerid>4</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="5">Jessica R</name>
+    <timein>77</timein>
+    <playerid>5</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="11">Foah Lee</name>
+    <timein></timein>
+    <playerid>6</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>   
+    <name playerid="12">Grisham K</name>
+    <timein>21</timein>
+    <playerid>7</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="15">James K</name>
+    <timein>21</timein>
+    <playerid>8</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="17">Bond J</name>
+    <timein>21</timein>
+    <playerid>9</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name>Harry K</name>
+    <timein>21</timein>
+    <playerid>10</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="20">Curtis M</name>
+    <timein>21</timein>
+    <playerid>11</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="0">Masha V</name>
+    <timein>21</timein>
+    <playerid>12</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="8">Debbie B</name>
+    <timein>21</timein>
+    <playerid>13</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="21">Valerie H</name>
+    <timein>21</timein>
+    <playerid>14</playerid>
+    <game date="" time=""></game>
+  </palyer>
+  <palyer>
+    <name playerid="22">Momo H</name>
+    <timein>21</timein>
+    <playerid>15</playerid>
+    <game date="" time=""></game>
+  </palyer>
+</players>

@@ -1,0 +1,168 @@
+﻿body
+{
+    background-color:teal;
+    position:relative;
+    top: 0px;
+    left:0px;
+    font-size: small;
+
+}
+.tabbedPanels {
+  background-color: transparent;
+    min-height: 30px;
+    min-width: 200px;
+    
+    left: 10px;
+
+}
+#panel {
+
+    left: 10px;
+    top:0px;
+    border-radius: 4px;
+    padding-left: 10px;
+   
+}
+input {
+    font-size: smaller;
+}
+.tabs {
+margin: 0;
+padding: 0;
+}
+.tabs li {
+float: left;
+list-style:none;
+}
+.tabs a {
+display: block;
+text-decoration: none;
+
+}
+.tabs a.active {
+background-color: white;
+}
+
+.panel {
+border-bottom:thin;
+border-bottom-color:gainsboro;
+
+}
+.panel h2 {
+color: orange;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.setting 
+{	
+	float:left;
+    clear:both;
+}
+.num 
+{  
+	text-align:left;
+    border-color: transparent;
+    vertical-align:bottom;
+    align-items: inherit;
+    margin-left: 4px;
+    width:auto;
+    
+}
+.num input[type=text]
+{
+    width:10px;
+    
+}
+.hover {
+    font-weight: 900;
+    color: red;
+}
+#PlayersList {
+    background-color:silver;
+    opacity: .85;
+    border-radius: 4px;
+   
+}
+
+#PlayersList input[type=text] {
+   justify-content:center;   
+   border-bottom-style: none;
+   border-color: transparent;
+   background-color: inherit;
+   color: cyan;
+   
+}
+
+#WaitList {
+    background-color:silver;
+    opacity: .6;
+    border-radius:4px;
+}
+
+#mainCol {
+min-width:200px;
+max-width:230px;
+min-height: 220px;
+padding:3px 3px 3px 3px;
+position:relative;
+top: 0px;
+left: 10px;
+z-index:0;
+
+}
+
+#mainCol hr {
+    color: transparent;
+}
+
+    #mainCol input {
+        border-color: transparent;
+        border-style:none;
+        background-color:transparent;
+    }
+
+#Roster {
+	min-width: 200px;
+	background-color:rgba(110, 138, 195, .9);
+	
+	position: absolute;
+	left: -197px;
+    top:30px;
+	z-index: 100;
+    border-radius: 4px;
+   
+}
+#Roster a {
+    visibility: hidden;
+}
+
+
+#panelSetup {
+	background-color:rgba(110, 138, 195, .9);
+	position: absolute;
+   
+    
+    min-height: 130px;
+	top: -127px;
+    left: 10px;
+	z-index: 100;	
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+}
+#panelSetup .close {
+	
+	background-color: rgba(110,138,195,.9);	
+    
+}
+    a.label {
+        color:honeydew;
+    }
+     a.value {
+        color:maroon;
+    }
+#panelSetup input {
+        width: 20px;
+        background-color:rgba(110,138,195,.3);	
+}
+

@@ -1,0 +1,45 @@
+﻿body
+{
+
+}
+.tabbedPanels {
+width: 30%;
+text-align:center;
+
+}
+.tabs {
+margin: 0;
+padding: 0;
+}
+.tabs li {
+float: left;
+list-style: none;
+}
+.tabs a {
+display: block;
+text-decoration: none;
+padding: 3px 5px;
+}
+.tabs a.active {
+background-color: white;
+}
+
+.panelContainer {
+clear: left;
+}
+
+.panel h2 {
+color: orange;
+font-family: Arial, Helvetica, sans-serif;
+} 
+.setting 
+{
+	width: 20%;
+	float:left;
+}
+.num 
+{
+	width:5%;
+	text-align:right;
+	 
+}

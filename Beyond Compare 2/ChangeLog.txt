@@ -1,0 +1,1367 @@
+-----------------------------
+2-June-2005 Build 231 release
+-----------------------------
+
+- This release is named 2.3.1
+
+- Fixed error when starting under Windows 95
+- Fixed calculating CRCs for files larger than 2GB
+- Fixed some localized strings that weren't displaying properly
+- Localized new help file changes
+- Changed popup menus so they match the rest of the menus
+
+
+-----------------------------
+27-May-2005 Build 230 release
+-----------------------------
+
+- This release is named 2.3
+
+- General
+  - Updated toolbar appearance under Windows XP.
+  - Updated icons in Explorer menu.
+  - Long filenames are truncated after 64 characters when displaying the
+    Explorer menu.
+  - Fixed hangs on CPUs with HyperThreading enabled.
+  - "Open With" commands can now include environmental variables.
+  - Fixed %b Open With varible.
+  - Ignore saved window positions if they are off the edge of the screen.
+  - Use millimeters instead of inches for report margins when warranted by
+    locale.
+  - Fixed permissions error when the installing user does not have permission
+    to write to HKEY_CLASSES_ROOT.
+  - BC2.XML or BC2.INI file can be stored in the Application Data directory
+    instead of the exe directory.
+  - Added settings location override at HKEY_LOCAL_MACHINE\Software\Scooter
+    Software\SettingsPath.
+
+- Scripting
+  - Added %fn_time% scripting variable for use in filenames, which expands as
+    'hh-mm-ss'.
+  - Added support for setting size filters in scripts.  The format argument
+    should be formatted as size:([<|>]#[KB|MB|GB]|none).
+  - Added "title:" argument to FILE-REPORT and FOLDER-REPORT script commands
+    to set the report title.
+  - Added support for wrap-none and wrap-word settings when generating HTML
+    file differences reports from a script.
+  - File differences reports generated for a pair of files from scripts will
+    now display the full paths of both files.
+  - Log file is now closed as soon as the script is done, rather than when the
+    window is closed.
+  - Improved parameter validation for FILE-REPORT and REPORT commands.
+  - Fixed FILE-REPORT so it can be called with a pair of filenames.
+  - Fixed parsing script commands longer than 4096 characters.
+
+- File Viewer
+  - Increased maximum line length to 65,535 characters under Windows NT/2K/XP.
+  - Added "Import Settings" and "Export Settings" to "Tools" menu.
+  - Changed Find Text so it no longer defaults to "Just Selection".
+  - "Open to first difference" now respects the "Advance by line" and
+    "Auto-select section" next difference settings.
+  - "Go To Next/Prev Different File" commands no longer appear if the folder
+    viewer isn't open.
+  - "Swap Sides" is now disabled while the comparison is active.
+  - Added FileViewer\MaxFileChunks DWORD tweak that controls how large a file
+    has to be before BC will keep it locked during the comparison.
+  - Increased size of regular expression edit in rules criteria dialog.
+  - Improved error checking in rules criteria dialog.
+  - Fixed "modified" state and undo behavior after using "Swap Sides".
+  - Fixed thumbnail's range when inserting new lines or realigning lines.
+  - Fixed "Save As" prompts when both sides are edited and one side is from
+    the clipboard.
+  - Fixed access violation when copying lines into an empty file or empty side.
+  - Fixed single instance mode so it no longer messes up the left filename.
+  - Fixed text comparison so it outputs the last portion of the right file
+    when "Never Align Mismatches" is set.
+  - Fixed file parsing so it will display the "Decode error" dialog if a UTF-8
+    file has invalid characters.
+  - Fixed file differences reports to use elipses on long filenames.
+
+- Folder Viewer
+  - During file copies automatically created folders will copy their matching
+    folder's attributes.
+  - Simplified rename options when only one file selected.
+  - Copying a closed folder on a local drive will now copy it's contents in
+    alphabetical order.
+  - Session names are now limited to 255 characters.
+  - Switched local disk move function to MoveFileEx when supported.
+  - Added support for minimizing the program when the "Building Folders"
+    dialog is displayed before the file operations dialogs.
+  - Added Settings\CopyACLs DWORD tweak that controls whether NTFS ACLs are
+    copied when copying files.
+  - In the compare contents results dialog it is now possible to double click
+    on the "xxx-Based Comparison of <xxx> to <xxx>" line when comparing a
+    pair of files to view them in the file viewer.
+  - File version information is now updated after copies and when external
+    changes are detected.
+  - Session manager now displays an error if a session's new name collides
+    with an existing session.
+  - Fixed "New Folder" command so it works consistently when selecting a empty
+    space in the directory comparison.
+  - Fixed displaying free space larger than 1 terabyte.
+  - Fixed creating directories with extremely long paths.
+  - Fixed loading zip files with a '/' or '\' directory entry.
+  - Fixed opening non-spanned zips created on a removeable drive.
+  - Fixed drawing bugs on dual monitor systems.
+  - Fixed saving a snapshot of a single file using the "Left" or "Right" path
+    option and using file filters.
+  - Double clicking on a folder in the "Compare Contents" results dialog no
+    longer opens it in the file viewer.
+  - Fixed logging the elapsed time of file operations that take more than a
+    day to complete.
+  - Fixed swap sides so it restarts background comparisons.
+  - Fixed "Open All Subfolders" so it works on filtered folders that are
+    visible due to the "Suppress filters" option.
+  - Fixed progress dialog to cancel when Esc is pressed.
+  - Fixed session "Save As" dialog so it doesn't show the untitled session as a
+    possible name.
+  - Fixed access denied message when moving folders between drives.
+  - Fixed base folder load error dialog so it always appears on screen.
+  - Fixed error when rapidly changing base folders while background folder
+    processing is active.
+
+- FTP
+  - Added support for Dutch month abbreviations in directory listings.
+  - Added support for Korean directory listings on FTP sites.
+  - Added support for German HP-UX directory listings on FTP sites.
+  - Fixed access violation when using SOCKS FTP proxies.
+  - Fixed VMS ftp listings for filenames that start with 0 or 1.
+  - Fixed access violation when attempting to create a folder on an FTP site
+    failed.
+  - Fixed error when creating a new diretory on an FTP site running XBox Media
+    Center.
+
+
+----------------------------------
+1-September-2004 Build 227 release
+----------------------------------
+
+- This release is named 2.2.7
+
+- Fixed visual glitch in file comparison report dialog.
+- Fixed access violation when saving a file without proper permissions.
+
+
+--------------------------------
+26-August-2004 Build 226 release
+--------------------------------
+
+- This release is named 2.2.6
+
+- Updated Compare Reports printout to match style of other reports.
+- Added automatic detection of UTF-8 and Unicode (UTF-16) files based on the
+  content of the file.
+- "Find Next/Previous Difference In Line" will now go to the next different
+  line if it's done with the current one.
+- File viewer's Swap Sides command now works in-place without reloading the
+  comparison.
+- Folder Viewer's Readonly flags will now change during "Set As Base Folder"
+  and "Compare To" commands to follow the folder's original state.
+- Added current user's User name to verbose log.
+- Custom sync's Just Selection setting is now sticky.
+- F3 now opens the Find Text dialog if a previous search hasn't been done.
+- File viewer no longer updates the folder viewer's comparison if one side is
+  a snapshot.
+- Added "Settings\DisableBCSSAssoc" DWORD tweak to turn off snapshot support,
+  allowing comparisons of files with .bcs and .bcss extensions.
+
+- Folder Viewer
+  - Fixed progress reporting so backups are not counted, "Copying (9 of 5)"
+  - Fixed "unsupported interface" errors when initializing autocomplete on
+    Windows NT 4.
+  - Fixed exporting Open With settings.
+  - Overwriting an existing sessions export zip with new settings will remove
+    existing versions of the export xml files.
+  - Overwriting existing backup files no longer moves the old backups to the
+    recycle bin.
+  - Fixed %F Open With variable.
+  - Fixed bug where Sync dialog could appear on top of the preview dialog when
+    performing a quick sync.
+  - Fixed folder viewer's "Compare To" menu's "Compare in File Viewer" to open
+    the text file viewer instead of the associated viewer.
+
+- File Viewer
+  - Fixed error handling for a few script commands.
+  - Fixed copying text to clipboard so it no longer copies deleted lines as
+    blank lines.
+  - Fixed Open Clipboard support so it doesn't throw away the clipboard
+    contents after save prompts.
+  - Fixed editing lines with vertical tab (0x0B) and form feed (0x0C)
+    characters.
+  - Fixed access violation when saving or exiting the file viewer.
+  - Copying lines between sides now handle cases where the source line does
+    not have a line terminator.
+  - Fixed editing files where the last line doesn't have a line terminator so
+    it no longer combines lines.
+  - Fixed "cannot focus disabled window" error while viewing file as web page.
+  - Fixed "Find Previous Difference" wrapping to the start of the last
+    difference when advancing by line.
+  - Fixed "Goto previous different file" incorrectly closing the file viewer
+    if the current file is the last file in the folder viewer.
+  - Fixed hang when searching for text with an invalid regular expression.
+  - Fixed selecting "Unicode" or "Unicode (Big Endian)" from the codepage
+    selection dialog when the default codepage is "<prompt>".
+  - Fixed file viewer's "hex:" display so it doesn't display anything at the
+    end of a line.
+
+- Reports
+  - Fixed Compare Results printing to respect user's selection of paper size.
+  - Fixed Patch file comparison report so it doesn't strip trailing
+    whitespace.
+  - Fixed Patch file comparison report so it always use the "Differences with
+    Context" filter.
+  - Fixed Patch file comparison report so it doesn't include extraneous header
+    lines.
+
+- FTP
+  - Fixed saving FTP passwords with foreign characters.
+  - Fixed FTP parsing of some French and German month abbreviations.
+  - Fixed Serv-U support so it won't use the '-T' list option on older
+    versions of Serv-U that don't support it.
+
+
+-----------------------------
+8-July-2004 Build 223 release
+-----------------------------
+
+- This release is named 2.2.5
+
+- Fixed error when copying into zip archives that would leave the size and
+  date fields of copied files blank.
+- Removed *.xml from default FTP ASCII transfer list.
+
+
+------------------------------
+29-June-2004 Build 222 release
+------------------------------
+
+- This release is named 2.2.4
+
+- Fixed file viewer's support for "Bypass disk cache on file reads" setting.
+- Fixed script's file comparison reports so they list the comparison's base
+  folders.
+- Fixed support for read-only XML settings files.
+- Fixed last modified times in TAR archives.
+- Fixed "Copy to Folder" when targetting a non-existant ZIP archive.
+- Improved error message when loading a base folder fails.
+- Fixed "USER/PASS/ACCT" firewall type so it remembers the remote password.
+- Fixed MLSD command so it doesn't request each listing twice.
+- Fixed "Backup...in this folder" when copying over files on an FTP site.
+- Fixed FTP's logging to replace account (ACCT) commands with stars.
+- Fixed access violation when displaying the date filter panel of the Session
+  Manager.
+- Fixed hang when using "Save As" command from within an archive file.
+- Fixed support for FTP directory listings with files larger than 2GB.
+- Added workaround for broken MLSD support on certain FTP servers.
+- Fixed file operation dialogs displaying an empty error panel when errors in
+  closed folders occur.
+- Fixed scripting's regular expression rename support.
+- Fixed HTML report output to have quotes around all attribute values.
+- Fixed "Where did that folder go?" tip appearing at incorrect times.
+- Fixed "Never align mismatches" when two files are completely different.
+- Fixed access violation when performing a rules-based content comparison
+  using older plugins.
+- Fixed file viewer's path edit's popup menus being disabled during
+  readonly/no edit mode.
+- Fixed rare hang when a script first loads.
+- Added *.xml, .htaccess, and .htpasswd to FTP's ASCII filetypes.
+- Fixed [ESC] in file viewer's "Find" dialog.
+
+
+-----------------------------
+13-May-2004 Build 221 release
+-----------------------------
+
+- This release is named 2.2.3
+
+- Fixed targeting zip files using the "Copy To Folder" command.
+- Fixed creating new folders in zip files.
+- Fixed access violation when closing a minimized file viewer when it's the
+  only window.
+- Fixed file viewer only mode so it prompts to save changes when closing a
+  minimized window.
+- Fixed file viewer titles to switch when using the "Swap Files" command.
+- Fixed Sync Preview's background painting under XP.
+
+
+----------------------------
+7-May-2004 Build 220 release
+----------------------------
+
+- This release is named 2.2.2
+
+- Fixed incorrect "Next Difference" behavior when blank lines are unimportant
+  (broken in build 218).
+- Fixed missing icons in Session Manager, Print Preview, and Comparison
+  Results dialogs.
+- Fixed incorrect behavior when using "Select all" followed by "Move" in
+  scripts.
+- Fixed "Save As" when saving files on FTP sites.
+- Fixed handling of "All" print range choice in print dialog.
+- Additional help file updates.
+- Added FinalBuilder to credits page of About dialog.
+
+
+----------------------------
+3-May-2004 Build 219 release
+----------------------------
+
+- This release is named 2.2.1
+
+- Fixed "Export All Settings" and Support commands (broken in 2.2 build 218).
+- Fixed error when performing a backwards text search with "Wrap Search" on.
+- Fixed error when comparing binary files in the file viewer using a multibyte
+  character set (eg UTF-8).
+
+
+-------------------------------
+29-April-2004 Build 218 release
+-------------------------------
+
+- This release is named 2.2
+
+- Updated and reorganized help file.
+- Added AutoComplete support to path edits.
+- Added folder viewer option to remove read-only attribute when copying from
+  CDs and DVDs
+- When creating new directories the filenames are now checked against the
+  archive associations setting, and will be created as zips instead of
+  directories if they match.  This affects the "New Folder" command, the
+  "Create" button in the base folder load error dialog, the copy to folder
+  command, etc.
+- Added support for "BCCustom.ini" file.  To add additional web links in the
+  folder viewer's Help menu, create that file and add a section named "Custom
+  URLs".  Each item's Name will be used as the label and the value will be
+  used as the URL (eg "Scooter Software"=http://www.scootersoftware.com/).
+- Added 'N' (Name) and 'X' (Extension) variables to file viewer's External
+  Conversion command line support.
+- The Explorer right-click extension now works with links to UNC paths in
+  Network Neighborhood/My Network Places.
+- File Viewer's "Align Manually" command can now have a keyboard shortcut.
+- Folder Viewers' "Set as Base on Other Side", "Compare In Viewer", and
+  "Compare To..." commands can now have keyboard shortcuts.
+- New program icon.
+- Tweaked graphics for 256 color environments.
+- Added version information to nag screen.
+- Added Settings/AutoComplete DWORD tweak to disable autocomplete on path
+  edits.
+- Removed certificate expiration from the trial key.
+- Temp file cache is now limited to 1024 files.
+- Fixed DOS Rename's handling of '.' character when using wildcards.
+- Fixed generation of XML folder comparison reports using FOLDER-REPORT
+  script command.
+- Fixed 'S' (Just Major Differences) filter in file comparison's REPORT
+  script command.
+- Fixed 'I' (Ignore Unimportant Differences) flag in REPORT script command.
+- Fixed FOLDER-REPORT script command to include base folder paths in report
+  header.
+- Fixed zip file support so it correctly handles zips with '\' path
+  delimiters.
+- Fixed folder viewer drawing to update the display faster in most common
+  cases.
+- Fixed moving files within a single drive so the source and destination
+  folders' sizes are updated.
+- Fixed file viewer's "Find Previous" menu item's icon.
+- Fixed file viewer's Swap command so it switches titles.
+- Fixed folder viewer's "Exclude" command when the selected file has '[' in
+  its name.
+- Fixed folder viewer's "Compare To" cursor so it stays active after
+  expanding a folder.
+- Fixed folder viewer's Filter Templates list so it can be longer than 9
+  items.
+- Fixed retrieving available codepages so it works under Windows 98/ME again.
+- Fixed errors when performing binary content comparisons of large files
+  under Windows 9x.
+- Fixed script initialization that occasionally prevented a script from
+  running.
+- Fixed archive support so expanded archives are refreshed correctly if the
+  entire file is copied.
+- Fixed "Selection Too Complex" error when using the "Select All" find text
+  command.
+- Fixed file viewer's Find & Replace so "Replace All" works correct after a
+  previous "Select All" find.
+- Fixed About dialog Credits button to stick in down position.
+
+- FTP
+  - Timestamps that are missing hh:mm:ss or seconds will now compare against
+    full timestamps correctly.
+  - Added support for FTP MLST command.
+  - Added new FTP proxy type, USER/PASS/ACCT.
+  - Added support for FTP ACCT command when required during login.
+  - Added support for FTP/AfterLogin tweak to send a custom FTP command
+    immediately after logging in.
+  - Added support for MVS FTP connections that use a Unix shell.
+  - Added support for another MVS partitioned data set directory listing
+    format.
+  - Fixed behavior when setting timestamps on Serv-U FTP servers.
+  - Fixed handling of a 500 error when logging in.
+  - Fixed invalid login errors when trying to reconnect to an FTP site.
+  - Fixed FTP path parsing on certain Windows FTP servers.
+  - Setting timestamps no longer affects remote directories.
+  - Improved display and logging of multiline FTP responses.
+  - Fixed folder comparison when comparing against FTP sites with "Case
+    Sensitive Filenames" unchecked.
+  - Fixed support for another French FTP directory listing format.
+  - Fixed VMS support for files that report "No privilege for attempted
+    operation".
+  - Fixed browse dialog so it doesn't clear an existing FTP site's password
+    if the password field is left blank.
+
+- Reports
+  - Changed Composite report to show intra-line differences.
+  - Fixed HTML report output to control collapsing of whitespace in certain
+    cases.
+  - Fixed support printing multiple copies of a comparison report.
+  - Added left and right path nodes to XML file differences report.
+  - Save dialog now includes a default extension for html, xml, csv, and txt
+    files.
+  - Fixed side-by-side folder comparison report in scripting to only include
+    folders that match the comparison filters.
+  - Fixed Summary List folder comparison report so it doesn't include a
+    second blank line in certain cases.
+  - Increase usable space for report titles.
+  - Disable Ignore Unimportant option for Statistics report to avoid
+    misreporting Unimportant Lines stats.
+  - Fixed section separator lines in Composite report's HTML output.
+
+
+---------------------------------
+4-February-2004 Build 216 release
+---------------------------------
+
+- This release is named 2.1.2
+
+- Reports
+  - Added word-wrap suppression for HTML output.
+  - Remember stylesheet choice for Folder Comparison's HTML output.
+  - Fixed directory comparison report exception when there aren't any
+    printers installed.
+  - Fixed empty file comparison reports when comparing certain extremely long
+    lines.
+
+- Scripts
+  - Command line scripts in evaluation mode now include a line in the log
+    saying so and listing the number of days left.
+  - Fixed hang when running scheduled scripts in evaluation mode due to nag
+    screen.
+  - Fixed script parsing of html-custom= option.
+  - Fixed script parsing of display-right-newer-orphans option.
+  - Fixed script parsing of print-landscape option.
+  - Fixed script parsing of word wrap options.
+
+- File viewer
+  - Fixed parse error when comparing UTF-8 files with characters longer than
+    2 bytes.
+  - Fixed file viewer so it doesn't incorrectly show Checkin, Checkout, and
+    Uncheckout menu items if Code Co-op isn't installed.
+  - Fixed "File has changed.  Reload?" prompt so it only prompts once and
+    doesn't go behind the file viewer.
+  - Fixed file viewer's drag and drop support when opening new files to
+    correctly change the active side.
+
+- Folder viewer & misc
+  - Fixed folder viewer's Exclude command when the empty space across from an
+    orphan was selected.
+  - Fixed range check error when resizing column headers on two monitors.
+  - Fixed copies from an encrypted source to an unencrypted destination in
+    Windows XP.
+  - Fixed Open dialog's Browse behavior when browsing for both sides of a
+    file comparison.
+  - Fixed Open dialog so it remembers the last folders used when using the
+    "New Folder Comparison" command.
+  - Rename command now remembers which rename type was last used.
+  - Zip password dialog's "Cancel" will now cancel the file operation rather
+    than repeatedly prompting for each remaining file.
+  - Fixed modifying password protected zip files so existing files stay
+    protected.
+  - Fixed binary content comparisons of files in CAB archives.
+
+- FTP
+  - Added initial/beta support for MVS (OS/390) FTP sites.
+  - FTP messages are no longer logged if logging is disabled.
+  - FTP password dialog now autoselects the password edit and existing
+    password text.
+  - Fixed FTP's invalid login dialog so it remembers anonymous login details.
+  - Fixed FTP's logging to include timestamps for all lines of a multiline
+    response.
+  - Fixed minor path parsing error.
+
+
+---------------------------------
+20-January-2004 Build 215 release
+---------------------------------
+
+- This release is named 2.1.1
+
+- File Differences report changes:
+  - Fixed line drawing in Composite style.
+  - Use strikeout for deleted lines  in Composite style.
+  - Reduce memory usage for Statistics style.
+  - Added gaps in output to emphasize non-contiguous sections.
+  - Fixed coloring when exporting as HTML with a color stylesheet.
+- Updated About dialog's link to "Regular Expressions by AnSo".
+- Fixed error when reading UTF-8 encoded files.
+- Fixed corruption when editing UTF-8 files.
+- Fixed error when comparing certain types of long lines.
+- Fixed "Open With" dialog's working directory browse button.
+- Added support for ClearCase -fname option (snapshot views).
+- Fixed /rules= command line switch
+- Fixed support for "With Context" flag ('w') in /out= switch.
+- Fixed FTP MDTM support (fetch timestamps & setting timestamps).
+- Fixed error when comparing the build number in exe versions.
+- Fixed refresh to detect changes in exe version information.
+- Fixed find & replace when replacing with an empty string.
+- Fixed "Synchronize Folders" handling of empty folders.
+- Changed Replace command's default keyboard shortcut from Ctrl+R to Ctrl+H
+  to avoid conflict.
+
+
+--------------------------------
+9-January-2004 Build 214 release
+--------------------------------
+
+- Fixed error when browsing for a file in the empty pane of the file viewer.
+- Fixed error when accessing empty folders through MacLink.
+- File operation dialog now always appears on the same monitor as the folder
+  viewer.
+- Fixed display error under Matrox video cards.
+
+
+--------------------------------
+7-January-2004 Build 213 release
+--------------------------------
+
+- This is the first official release of Beyond Compare version 2.1.
+
+- The following are all changes since 2.0.3
+
+- New Features
+  - Comparison Report enhancements:
+    - Added support for wrapping long lines.
+    - Added support for configuring printer paper size.
+    - Added support for using a cascading style sheet to control coloring
+      and line drawing in HTML reports.
+    - Copying an HTML report to the clipboard now stores it as both HTML
+      and text.
+    - Added support for changing the background color on mismatched lines.
+    - Added support for exporting reports as an XML file.
+    - Improved print preview and general page handling.
+    - Added support for viewing an HTML report in a browser without saving
+      it first.
+    - Added "Comma delimited" substyle to "Statistics" layout and added
+      counts for additional line types.
+    - "Patch" file differences report style now supports "Normal",
+      "Context", and "Unified" patch styles, which are compatible with the
+      Unix diff/patch commands.
+    - Improved layout and line drawing in folder comparison reports.
+    - Added support for optional columns (eg, version) to folder comparison
+      reports.
+    - Added support for single-sided file comparison reports.
+  - Added read-only support for .CAB, .TAR, .GZ, and .TGZ archive formats.
+  - Added support for importing and exporting preferences, sessions, and
+    rules.
+  - Added support for XML based sessions, rules, and preferences files.
+  - Added session setting to bypass the disk cache on file reads and read
+    directly from the disk.
+  - Added session setting to maintain local files' short (8.3) filenames
+    during copies.
+  - Added session setting to control whether content comparisons override
+    other criteria.
+  - Added session setting to copy FTP timestamps to local files after
+    uploads.
+  - Added session setting to detect locks on the source of a copy in order to
+    fail gracefully (eg, Outlook PST files).
+  - Added support for VMS FTP servers.  Added FTP setting to remove VMS
+    version information.
+  - Added option to not save FTP passwords.
+  - Added option to change comparison thread priority.
+  - Added Swap Sides command to switch base folders.
+  - Windows NT/2000/XP only:
+    - Added support for filenames and paths longer than 256 characters.
+    - Added support for touching folders.
+    - Added support for comparing files larger than 2GB.
+    - Added support for XP themes.
+  - Rules enhancements:
+    - Removed two character limit on unimportant text delimiters.
+    - Added support for an escape character in delimiter classification.
+    - Added setting to extend unimportant columns to end of line.
+    - Added setting to compare line termination and report it as a
+      difference.  Line termination differences can be marked as
+      unimportant.
+    - Added setting to disable aligning mismatched text.
+    - Added setting to wrap lines at a specific column.
+    - Increased maximum line length to 8192 characters.
+    - Added setting to remove rich text formatting (RTF) before comparison.
+    - Added setting to execute an external conversion program before
+      loading files and/or after saving them.
+    - Added setting to use Delphi's convert.exe on unsupported DFM files.
+    - Added settings to control which line alignment and character
+      alignment algorithms are used.
+  - Added support for changing character encoding and line termination in
+    "Save As" dialog.
+  - Added support for automatically using Serv-U FTP's timestamp extended
+    directory listing.
+  - Added Write To... command to continuously append the session log to a
+    file.
+  - Added support for searching within a line, looking backwards in the
+    file, limiting the search to the selection, wrapping at the bottom of a
+    file, and selecting all matching lines.
+  - Added alternate comparison algorithm when sync quality is set to "Fast
+    and Coarse".
+  - Added additional character alignment algorithms, column based and
+    simple.
+  - Added support for renaming files using regular expressions.
+  - Added support for assigning a keyboard shortcut to Open With
+    applications.
+  - Added support for a column ruler in line details area.
+  - Added Find & Replace command.
+  - Added Copy Filename command to copy selected files' paths to the
+    clipboard.
+  - Session Open dialog can now load a session with base folders other than
+    those saved.
+  - Plugin viewers can now be selected from the Session Open dialog when
+    comparing files.
+  - Added support for a readonly shared sessions file that is merged with
+    the local sessions.
+  - Added support for password protected zip files.
+  - Added option to clear saved FTP passwords.
+  - Added support for extended mouse buttons, such as "browser back",
+    "browser forward", etc.
+  - Added setting to change which filetypes make the "View As Web Page"
+    command visible.
+  - Filter enhancements:
+    - Added setting to filter by file size.
+    - Added support for ranges of characters as wildcards using "[a-b]" and
+      "[!d-f]".
+    - Parent folders are now included automatically without requiring their
+      own filter.
+    - Subfolders within included folders are included automatically.
+      (Previously required a "<folder>\...\*" filter).
+    - Filters with path information don't need to be rooted to the base
+      folder. (Leading ".\" is optional).
+  - Added support for "XCRC" ftp command (must be listed in response to a
+    "FEAT" request).
+  - Added support for UTF-8 in Windows 9x.
+  - Added file viewer option to indent with spaces instead of tabs.
+  - Added option to override Application Data directory at
+    [HKEY_CURRENT_USER\Software\Scooter Software\SettingsPath]
+  - Added "Compare to Clipboard" fileviewer command to compare current
+    selection with contents of the clipboard.
+  - Added timeout to FTP downloads (default 120 seconds).
+  - Added "Next/Previous Difference In Line" file viewer commands.
+  - Added integration with Reliable Software's Code Co-op version control
+    system.  File viewer now supports check-in, check-out, and uncheckout
+    commands if Code Co-op is the default SCC provider.
+  - Added setting to only show the file viewer's initial comparison results
+    window if the files match.
+  - Added "Find Previous" menu item and toolbar button to file viewer.
+  - Significant speed increases in file comparisons, display handling, etc.
+  - Significant stability increases in thread handling.
+
+
+- New command line switches:
+  /expandall           - Expands all folders when loading first session or
+                         using /out= switch.
+  /noedit              - Disables editing files in the file viewer.
+  /rules=xxx           - Use rules named 'xxx' when opening file viewer or
+                         using /out= switch.
+  /silent              - Suppresses the scripting window and task bar entry
+  /quickcompare, /qc   - Performs a rules-based quick comparison and sets
+                         the DOS error level.
+                         Error levels: 0 = match, 1 = similar,
+                                       2 = mismatch, 3 = error
+                         Can accept an argument in the form
+                         /quickcompare=xxx where 'xxx' is one of 'size',
+                         'crc', 'binary', or 'rules-based'.
+  /savetarget=xxx      - File viewer's "Save" command will overwrite the
+                         specified file rather than the original file.
+                         Also supported as /mergeoutput=xxx.
+  /closescript         - Close the scripting window when the script is
+  						 finished.
+
+
+- Scripting:
+  - Added support for a shared scripts path that will be searched if the
+    script isn't found in the current directory.
+  - Commands can be continued on multiple lines by ending each line but the
+    last with the '&' character.
+  - Added %date% and %time% variables that will expand to the current date
+    and time, respectively.
+  - If a scripting error is encountered the DOS error level is set to 1.
+  - Command line parameters (%1 to %9) no longer include switches that
+    start with '/'.
+  - "Run Minimized" option removed.
+  - Changes to existing commands:
+    filter             - Now accepts cutoff, attribute, and name filters as
+                         a single command.  Cutoff option now accepts both
+                         '###' and '###days'arguments.
+    compare            - Added support for 'crc' flag
+    expand, collapse   - Now accepts folder names in addition to "all".
+                         Multiple folders can occur on the same line, and
+                         subfolders can be included using the format
+                         <folder>\<folder>.
+    option             - Fixed 'stop-on-error' option.  When stop-on-error
+                         is set, file errors pause the script and ask for
+                         confirmation before continuing.
+    load               - Failure to load a base folder is now a critical
+                         error and terminates the script.
+    rename             - Now accepts "regexpr" argument which enables
+                         regular expression renames.
+          rename (regexpr <old mask> <new mask>)|<new mask>
+    report             - *DEPRECATED*  This is maintained for backwards
+                         compatability, but new scripts should use the new
+                         file-report or folder-report commands.
+
+
+  - New commands:
+    beep               - Beeps the PC speaker.
+    snapshot           - Saves a snapshot of a folder.  If "output" is left
+                         off, or only includes a path, the snapshot will be
+                         named "<pathname>_yyyy-mm-dd.bcss".  If the output
+                         filename doesn't have an extension ".bcss" will be
+                         added automatically.
+          snapshot [save-crc|save-version|expand-archives|no-filters]
+                   lt|rt|path:<path> [output:<filename>]
+    sync               - Performs a "Synchronize Folders" operation.
+          sync [visible|create-empty] (update|mirror):(lt->rt|rt->lt|all)
+    file-report        - Produces a file differences report of the selected
+                         or named files.
+    folder-report      - Produces a folder comparison report.
+
+
+- Tweaks:
+  - Using the /out= switch suppresses the taskbar entry.
+  - Loading files from the Open dialog doesn't show the quick compare
+    results dialog.
+  - Archive Extensions setting now uses file masks with wildcards.
+  - Keyboard shortcuts are now checked for collisions against menu hotkeys.
+  - Touch action stays enabled when folders are selected.
+  - File operation dialogs only show the error log after errors have
+    occurred and close automatically if none do.
+  - Mirror syncs perform deletes before copies in order to handle low disk
+    space.
+  - Rules are now picked based on both filenames and the match higher on
+    the rules list is used.
+  - File version comparisons are now numeric rather than alphabetic.
+    Column sorts work better and the Compare Versions setting returns a
+    newer/older result.
+  - If a UTF-8 byte order mark is detected, the codepage is automatically
+    set when reading a file.
+  - If nothing is selected in the folder viewer the status bar shows counts
+    and sizes for all visible files.
+  - Comparison results in the folder viewer are now updated when closing
+    the file viewer.
+  - Added MRU lists to file viewer's path edits.
+  - Added lines for page file size and available paging memory to support
+    report.
+  - Added ANSI, OEM, Unicode, and UTF-8 codepages to top of codepage list
+    to make selecting them easier.
+  - Goto Next Different File no longer prompts for confirmation.  Removed
+    default (Ctrl+M) shortcut.
+  - Find Text settings are remembered as long as the folder viewer is open.
+  - Added support for using Shift+Del to delete files without moving them
+    to the Recycle Bin.
+  - Rules that are occluded by higher rules will color red in the Options
+    dialog.
+  - Added CRC comparisons to Compare Contents operation.
+  - Find Next/Previous Difference now scrolls the difference into view in
+    the line details area.
+  - Available codepages and their localized names are now retrieved from
+    the system.
+  - Added tweak to change report footer
+  - Ctrl+Up and Ctrl+Down scroll the file and folder viewers by a line
+    without changing the current selection.
+  - Ctrl+PageUp and Ctrl+PageDown scroll the file viewer by a screen length
+    without changing the current selection.
+  - Shift+Left and Shift+Right scroll the file viewer left and right a
+    character at a time.
+  - Elapsed time of file operations is now logged in verbose mode.
+  - Goto Line dialog remembers previously entered line.
+  - Browsing to a saved connection in Network Neighborhood now uses the
+    saved location instead of the local path.
+  - Files larger 1MB in zip archives are now cached after extraction.
+  - Files are now backed up during moves if backup on copy is set.
+  - Find Next Difference scrolls the difference into view if it extends
+    past the bottom of the screen.
+  - Rename wildcard expansion now matches DOS rename.
+  - Added version information to window caption during BETA releases.
+  - Session dropdown list now resizes to display long session names.
+  - Line details and line edit now synchronize their scrolling (requires
+    RichEdit 3.0).
+  - Double clicking to edit a line now starts editing at location of the
+    click.
+  - Timestamp differences of less than 1 second are ignored, even if the
+    tolerance is 0.
+  - Added Settings\OldCopyMethod (DWORD) tweak to always use the old copy
+    method even under Windows NT/2000/XP.
+  - Added FTP\NoMDTM (DWORD) tweak to disable setting timestamps on FTP
+    sites using the MDTM command.
+  - Filter dialog's "Include All" button now clears cutoffs and advanced
+    filters.
+  - Added *.ctl association to Visual Basic rules, and escape characters to
+    C++ string literals.
+  - Added drag&drop support and snapshot awareness to Session Open dialog.
+  - If browse is used in the file viewer with an empty path, the path of
+    the other file is used as a starting point.
+  - Added option to suppress the file Exclude dialog for the duration of
+    the run.
+  - "Compare To..." now allows comparing a file against itself.
+  - "Compare To..." now always loads files from the left folder into the
+    left file view, even if they were selected second.
+  - Session Wizard's Save Snapshot command now supports not saving CRC
+    values.
+  - Custom builds now flag themselves in the registry, and a message is
+    displayed if a new version doesn't contain that enhancement.
+  - Changed coloring for various sync icons on toolbar and in Synchronize
+    Folders dialog to differentiate them.
+  - Touch dialog now displays directional arrows when copying timestamps
+    from one side to the other.
+  - Properties action now show a single dialog for all selected files and
+    isn't limited to a small selection.
+  - File Filters dropdown now splits on both commas and semicolons.
+  - Saving a report to a file now writes the report as it's generated,
+    rather than keeping it in memory until it's completely done.
+  - List of files to check for version information is now based on the
+    rules for the Version Viewer if they exist.
+  - FTP socket errors are show text errors instead of the error code.
+  - Added "Buy Now" button to nag dialog.
+  - Added support for Windows' "Snap to Default Button" mouse option.
+  - Size and attribute filters are now included on the Timestamp cutoff
+    legend.
+  - Automatically generated snapshot names are now numbered if they collide
+    with an existing filename.
+  - Fixed screen at a time file viewer scrolling so it uses the correct
+    width.
+  - When it's first opened, the log is resized so at least two lines of the
+    comparison are visible.
+  - /Silent command line switch is automatically used when running non-
+    interactively (eg, as a Scheduled Task)
+  - Comparing a file against the "contents" of a file in a snapshot is now
+    treated as a single-sided comparison instead of an error.
+  - File viewer and folder viewer now react to the extended mouse button
+    commands such as browser forward and browser back.
+  - The filetypes checked for the version column can be modified by adding
+    filetypes to the Version Viewer plugin's rules.
+  - Plugins can now be used after registering without requiring a restart.
+  - Canceling the initial "Open Session" dialog starts BC with an empty
+    session instead of closing the program.
+  - Refresh Selection now works on local files.
+  - The '*' key now completely expands a selected folder.
+  - When an open folder is selected, "New Folder" will create the folder
+    within that folder instead of as a sibling.
+  - [Home] and [End] keys now scroll the file viewer left and right.
+  - Fixed support for Popup (App) key.
+  - During edit mode the current character's hex value is displayed in the
+    status bar.
+  - /NoEdit switch now hides editing menu items and buttons.
+  - Verbose logging now includes elapsed time of background content
+    comparisons.
+  - Improved file viewer's handling of Unicode conversion errors when
+    reading files.
+  - Added Settings\MRUSize tweak to control number of items stored in MRU
+    lists.
+  - Creating new rules will now skip the "Pick Handler" dialog if there aren't
+    any plugins loaded.
+  - File viewer's [ESC] shortcut can now be removed.
+  - Added keyboard shortcuts Ctrl+Left/Right/Up/Down to folder viewer which
+    act like normal treeview arrows (expand/collapse folders, go to parent).
+  - Improved trial mode error messages.
+  - File viewer no longer prompts to reload changed files if it's closing.
+  - Improved error handling when invalid filenames were given on the command
+    line or in the initial Open dialog.
+  - Added log message to report the current script's run time when the script
+    completes.
+  - Optimized rules-based comparisons in archive files by checking stored CRC
+    values before comparing contents.
+  - Added Settings\FullArchiveCompare tweak to force full comparisons of
+    zipped files during rules-based comparisons.
+
+
+
+- Bug Fixes:
+  - Fixed crashes when canceling an FTP transfer.
+  - "Zip" folder icons are now used for all archive files.
+  - Fixed cutoff calendar's handling of a date past the end of a month.
+  - When using just a drive (eg C:) on the command line, the working
+    directory is properly expanded to its long form.
+  - File copies in Windows NT/2000/XP now support files larger than 2GB and
+    maintain permissions, encryption, and alternate data streams.
+  - Fixed errors when copying a file across a network in Windows
+    NT/2000/XP.
+  - Fixed browse dialog's filtering of zip files under Windows XP.
+  - Toggling "Classic Icons" setting in Toolbars dialog enables Apply
+    button.
+  - Fixed zip file's handling of files with '.\' in their paths.
+  - Fixed bug when resizing columns on a dual monitor computer.
+  - Logging is disabled completely when log mode is "none" (previously,
+    messages like "Session Loaded" were still logged).
+  - Fixed handling of filenames with multibyte characters (eg Japanese).
+  - Synchronize action no longer builds folders which aren't affected by
+    the sync.
+  - Invalid filenames from the command line and Open dialog are now passed
+    to the file viewer and displayed in the path edits, rather than being
+    cleared.
+  - Importing a 1.x session multiple times now appends a (#) after the
+    (1.x), instead of adding a second (1.x).
+  - Reduced flicker on comparison thumbnail and when resizing folder
+    viewer's columns.
+  - Folder viewer's selection state is now maintained when changing display
+    filters, resorting columns, and using the collapse all command.
+  - Fixed regular expression matching on lines with null characters.
+  - Saving a Unicode file only writes out a leading byte order mark if the
+    file originally had one.
+  - Fixed parsing files with Macintosh line endings (carriage return).
+  - Fixed access violation when copying files into zip archives.
+  - Fixed browse dialog's filtering of zip files under Windows XP.
+  - Fixed handling of filenames on FTP sites that aren't valid local names.
+  - Fixed handling of system shutdown.
+  - Using the retry command after a base folder load error no longer marks
+    a session as modified.
+  - Fixed access violation when moving files with content comparison is
+    active.
+  - Improved handling of FTP's "Initial Directory" setting.
+  - Fixed deleting files on FTP servers where the filename can't include
+    path information.
+  - File comparison status is recalculated after manual alignments.
+  - Added progress reporting to binary and rules-based content comparisons.
+  - Files skipped due to user confirmation aren't logged as errors.
+  - Links to archives on FTP sites when using complete link resolution
+    report correct file size instead of size of contents.
+  - Sample date in Appearance settings is now generated using the user
+    locale.
+  - Binary content comparisons of files in archives now quit after the
+    first difference is found rather than waiting for both files to be
+    extracted.
+  - Copying multiple files into a zip archive only saves the archive once,
+    rather than after every file.
+  - Fixed content comparison of large files in zip archives.
+  - Fixed error message when trying to rename a file longer than the
+    filesystem allows.
+  - Files on FTP servers are no longer deleted if an upload fails.
+  - Comparing local files/folders no longer retrieves contents of all
+    parent folders.
+  - Fixed restoring connection to mapped network drives.
+  - Removed impossible copy operations from Sync Options panel (eg, Copy to
+    right for a right orphan).
+  - Fixed session list handling when multiple instances are modifying the
+    session file.
+  - Fixed error handling in Expand All when retrieving a directory listing
+    fails.
+  - Disabled double clicking in the line details area to edit a readonly
+    line.
+  - Folder viewer now respects Windows' mouse "Wheel Scroll" setting.
+  - Fixed error when comparing a file to itself and saving changes to one
+    side.
+  - Fixed bug where editing a file in the file viewer would change the
+    selected item in the folder viewer.
+  - Fixed coloring of subfolders of top-level orphaned parents when
+    background folder scanning is active.
+  - Files that haven't been compared by the background content comparison
+    are immediately filtered if the display filter only shows orphans.
+  - Initial comparison dialog when opening just the file viewer can be
+    closed while comparison is in progress.
+  - Fixed browse dialog in file viewer when trying to browse to an empty or
+    non-existant file.
+  - Fixed alignment edge case that marked matching text as a pair of
+    orphaned blocks.
+  - Fixed editing lines that contain nil characters.
+  - Comparison Info dialog is now disabled until the comparison completes.
+  - Disk free space is recalculated after a fast refresh.
+  - Fixed bug where cached files weren't deleted when the cache exceeded
+    its limit.
+  - Long FTP paths in the file viewer are properly shrunk when they're
+    longer than the visible space.
+  - Fixed script's command line expansion when a parameter had spaces so
+    quotes are no longer necessary.
+  - Fixed error reporting when extracting a file from a zip archive failed.
+  - Fixed base folder load error when reconnecting a mapped drive letter.
+  - Fixed display of folders which fail to open during a background scan so
+    they draw in yellow instead of hollow.
+  - Fixed logging of deletions when a folder sync is canceled.
+  - The "Where did that folder go?" tip no longer displays if a parent
+    folder is closed before the folder is expanded.
+  - Fixed canceling a session wizard's Save Snapshot.
+  - Fixed session wizard's incorrectly clearing information when using the
+    Back button.
+  - Fixed file viewer's Edit menu (Cut, Copy, Paste) when editing a line.
+  - Fixed script's "SELECT EMPTY.FOLDERS" so it no longer selects folders
+    that contain filtered files.
+  - Improved FTP's error handling when uploading a file exceeded the quota
+    on the remote system.
+  - Fixed crash when starting a second instance when "Allow multiple
+    instances" was off.
+  - Fixed crash when closing the file viewer while a report was being sent
+    to the printer.
+  - Fixed invalidation bug when deleting multiple files including the one
+    at the top of the window.
+  - Fixed invalidation bug when copying or deleting files when the parent
+    folder is past the top of the window.
+  - Fixed "Open With"'s line number handling in the file viewer when the
+    selected line was the first line that passed the display filter.
+  - Fixed saving plain text and HTML file difference reports of UCS-2/
+    UTF-16 files.
+  - Fixed command line expansion of paths that contain '..' and '.'
+  - Session Wizard no longer shows a session name when displaying the
+    summary page for a file comparison.
+  - Hidden menu items are now properly disabled so they don't respond to
+    keyboard shortcuts.
+  - Fixed folder viewer's sorting to disable sorting by an invisible
+    column.
+  - Improved connecting to UNC paths that contain international characters.
+  - Fixed support for '...' wildcard as an upper filename filter mask.
+    (Eg, Include "ABC\...\*.txt").
+  - FTP directory listings now always use the ASCII transfer type.
+  - Improved updating when scrolling a file comparison left or right.
+  - Logs of multiline FTP responses now include a timestamp on every line.
+  - File viewer now respects Windows' mouse "Wheel Scroll" setting.
+  - Fixed parsing FTP listings with French or Spanish dates and for files
+    larger than 2GB.
+  - If "Fetch Timestamps" is enabled and the server responds with "500
+    Invalid Command", BC no longer keeps sending the command.
+  - Fixed session manager's "Use Untitled" when the source session is
+    locked.
+  - Moving a file within a disk now remembers previously calculated CRCs.
+  - Fixed creating a file differences report of a single line selection.
+  - Blank FTP passwords are now remembered.
+  - Switching file viewer display filters no longer clears the count of
+    differences in the status bar.
+  - Renaming a file to include a '/' or '\' is now an error.
+  - File difference reports now use file titles if they're provided.
+  - File viewer's "Insert Line" commands now respect the readonly flags.
+  - Lines with only whitespace will now be marked unimportant if either
+    "Leading" or "Trailing" whitespace is active.
+  - Fixed whitespace handling when "All other text is unimportant" is set.
+  - Fixed access violation when closing BC after a "Compare Contents"
+    action.
+  - Changing the display filter will now keep the selected item's position
+    relative to the top of the screen.
+  - Fixed pre-file operation directory building dialog's cancel handling.
+  - Fixed range check error in file viewer when resizing right file's
+    display to smaller than 50 pixels.
+  - Fixed content comparison's overall progress bar when archive files were
+    selected.
+  - Fixed Esc key support in Quick comparison dialog.
+  - Fixed saving a snapshot with "Store archives expanded" and invalid
+    archives.
+  - Fixed searching for the pipe character (|).
+  - Fixed hourglass cursor when waiting for an Open With application to
+    finish.
+  - Fixed file viewer so Ctrl+M and Ctrl+[ aren't treated as [Enter] and
+    [Esc].
+  - Fixed "Copy To Folder" when the target folder was deleted outside of BC.
+  - Fixed incorrect date behavior on FTP sites.
+  - The archive attribute is now set when saving files.
+  - Fixed range check error when loading extremely long lines with lots of
+    tabs.
+  - Fixed file viewer's Save to handle cases where creating a temporary file
+    in the target directory fails.
+  - Improved behavior when copying to a disk using DirectCD.
+  - Fixed browse dialog so it updates the archive panel's visibility
+    properly.
+  - Improved error handling when a network drive disconnects while building
+    directory comparisons.
+
+
+- Updated Explorer extension (BCShellEx):
+  - Linked files are now remembered across instances of Explorer, so
+    comparing against files on the Desktop works correctly.
+  - Added new "Compare In" submenu to allow comparing in a specific viewer.
+  - Now reads "Archive Masks" setting and treats all archive types as
+    folders.
+  - Fixed error where Beyond Compare wouldn't start from certain folders.
+
+
+- Plugin Interface:
+  - Removed unused BC_TRANSFER_BUFFER and BC_TRANSFER_ENTRY file transfer
+    types.
+  - Local files are always passed using BC_TRANSFER_PCHAR even if plugin
+    supports BC_TRANSFER_STREAM.
+  - Added optional QuickCompare() export that can be used to provide custom
+    rules-based content comparisons.
+  - Added support for BC_CREATE flag in TBCFileHandler.StartTransfer()
+  - Added support for BC_CALLBACK_VERSION flag and TBCVersionInfo structure
+    in GetBCStruct().
+
+
+---------------------------------
+7-November-2003 Build 183 release
+---------------------------------
+
+- Fixed error that caused the CopyTo scripting command to always copy both
+  sides of the selection, ignoring the LT or RT options.
+
+
+---------------------------------
+7-November-2003 Build 182 release
+---------------------------------
+
+- This release is named 2.0.3
+
+- Fixed error when opening an FTP file while a retrieving a directory
+  listing.
+- FTP directory listings are now always transfered in ASCII mode.
+- Fixed file comparison reports so they don't produce empty reports for
+  Unicode files.
+
+
+----------------------------------
+2-September-2003 Build 181 release
+----------------------------------
+
+- Added /noedit command line switch that hides and disables all editing
+  commands in the file viewer.
+- Command line arguments are not converted to lower case.
+- Fixed range check error after copying files in Windows XP.
+- "Insert Blank Line" and editing in the line details area are propertly
+  disabled in readonly mode.
+
+
+------------------------------
+29-July-2003 Build 180 release
+------------------------------
+
+- Fixed startup trial mode error.
+- Fixed FTP parsing of French timestamps.
+- Fixed creating a file differences report of a single line selection.
+
+
+------------------------------
+30-June-2003 Build 179 release
+------------------------------
+
+- This release is named 2.0.2
+
+- Added /silent command line switch to suppress scripting window.
+- Increased limit on number of context lines in file viewer.
+- Fixed editing lines with null (0x00) characters.
+- Fixed parsing of FTP dates that don't include a year.
+- Added support for Serv-U FTP's '-t' timestamp extended listing format.
+- Fixed access violation on startup.
+- Fixed access violation when updating zip files.
+- Fixed access violation when producing a file differences report of a
+  single sided comparison.
+- Fixed logging of "Error locating XXX on side XX in FindEntryCompare"
+  message.
+
+
+---------------------------------
+31-January-2003 Build 178 release
+---------------------------------
+
+- Added /SaveTarget= command line option (also supported as /MergeTarget=).
+  When specified, all file viewer saves (not "Save As") will be written to
+  the given file instead of the original file
+- Fixed "Revoked Certificate" error in trial mode
+- Fixed error when using a SOCKS firewall
+- Fixed parsing UNC share names with non-filename characters (eg ':')
+- Fixed cutoff handling of "days ago" setting
+
+
+----------------------------------
+27-December-2002 Build 177 release
+----------------------------------
+
+- File operation log can now hold an unlimited number of items
+- Fixed "Open With" handling of a disjointed selection
+- Fixed "Previous Difference" command when display filter is "Just Matching"
+- CRC values are now computed for zip files
+- Text and HTML file difference reports are now written in the original
+  file's code page
+- Fixed read error when starting multiple copies of BC from a batch file
+- Fixed Dr. Watson error under Windows 2000
+
+
+---------------------------------
+14-October-2002 Build 176 release
+---------------------------------
+
+- Fixed upload error when uploading to certain wu-ftpd servers
+- Improved handling of extended characters in filenames stored in zips
+- Fixed bug in ClearCase support
+- Fixed alignment of zips in snapshots with live snapshots
+- Fixed range check error in Window menus
+- Fixed access violations in scripts when background content compares are
+  active
+
+
+--------------------------------
+4-October-2002 Build 175 release
+--------------------------------
+
+- ClearCase version extended paths supported
+- Fixed command line generation of folder differences reports
+- Fixed single-directory mode error when starting two instances of BC
+- Improved handling of unrecognized filetypes (block devices, etc) on FTP
+  sites
+- Fixed AV when activiting BC with two pairs of changes files open
+- Fixed pause after zip file operations are finished
+
+
+----------------------------------
+3-September-2002 Build 174 release
+----------------------------------
+
+- Fixed FTP reconnect handling when retrieving directory listings
+- Fixed access violation when task switching to file viewer
+
+
+--------------------------------
+26-August-2002 Build 173 release
+--------------------------------
+
+- Fixed handling of '%' characters in BC2.ini
+- Fixed creating empty directories in zip files
+- Fixed script non-interactive mode to not display file operation errors
+- Fixed filtering bug that would leave the display empty (broken 170)
+
+
+--------------------------------
+18-August-2002 Build 172 release
+--------------------------------
+
+- Bug fix
+  - Fixed crash when loading root folders (broken in 171)
+
+
+--------------------------------
+16-August-2002 Build 171 release
+--------------------------------
+
+- This release is named 2.0.1
+
+- Tweaks and bug fixes
+  - Added support for accelerator keys in non-Delphi plugins
+  - Improved handling of damanged registration keys
+  - Fixed generating a folder comparison report from a script failing if
+    there was no active selection
+  - Saving an untitled session is now treated as a "Save As"
+  - Fixed "Touch" operation's progress reporting
+  - Canceling a "Compare Contents" operation no longer leaves the "Next"
+    button disabled
+  - Opening just the file viewer now updates the taskbar caption
+  - Fixed file viewer's line details when "Save Viewer State" is turned off
+  - Editing a file on an FTP site now maintains the original permissions
+  - Fixed Find Text's "Whole Word" option incorrectly matching strings with
+    one additional letter before the end of a line
+  - File differences report fixes
+    - Fixed range check error when printing binary files
+    - "With Context" no longer drops first line of trailing context
+    - "With Context" no longer skips leading context if a block is
+      unimportant
+    - Fixed error when printing reports with more than 1000 pages
+  - Zip and Snapshot handling
+    - Refreshing an open zip file now detects new folders
+    - Copying over an expanded zip now updates its visible contents
+    - Zip files which fail to load are now released
+    - Fixed bug where certain valid zips would fail to read
+    - Fixed bug reading compressed snapshot files
+  - Fixed "single directory" handling
+    - "Find Text" previous search list is now remembered
+    - !untitled! no longer added to "Recent Sessions" menu
+
+
+------------------------------
+25-June-2002 Build 170 release
+------------------------------
+
+- Bug Fixes
+  - Zip files now color like files in folder comparison reports
+  - Fixed crash when accessing FTP directories with large index files
+  - Fixed divide by zero error when tabs weren't considered whitespace
+  - Fixed Open With's handling of %l (line #) variable in folder viewer
+  - Fixed support for non-Delphi plugins
+  - Improved logging of exceptions
+  - Fixed bug that caused snapshots to misalign when loading them
+  - Saving snapshots without "Save Zips Expanded" checked saves the zips
+    as files instead of empty directories
+  - Added error message when text that isn't a registration key is entered
+    in the registration dialog
+  - Improved handling of filenames with multibyte characters in them
+  - Fixed access violations after copying or saving files
+  - Improved handling of untitled/default/"empty" sessions
+
+
+-----------------------------
+29-May-2002 Build 169 release
+-----------------------------
+
+- Tweaks
+  - Command line processing changed to better emulate WinDiff:
+    "BC2 C:\ABC\DEF.TXT C:\DEF" will look for C:\DEF\DEF.TXT
+
+- Bug Fixes
+  - Fixed file comparison report's "Just Selection" handling
+  - Fixed /out= command line switch
+  - Fixed single-instance mode when only file viewer is open
+  - Fixed "LIST Option" handling in Options dialog
+  - Fixed "Open Clipboard" handling when there isn't text on the clipboard
+  - Fixed line details background painting
+  - Fixed handling when restoring a minimized script window
+  - Fixed "Compare To..." Compare Contents handling of folders
+  - Cleaned up section seperators in file comparison reports
+  - Fixed "Session Load Canceled" error when using "Load <Default>" and
+    "Criteria" commands in a script
+  - Fixed handling when script file not found
+  - Fixed report bug for extremely long reports
+
+
+-----------------------------
+22-May-2002 Build 168 release
+-----------------------------
+
+- Tweaks
+  - Extensions that identify zip files now configurable
+  - File version info now taken from fixed header instead of string table
+  - Added "Fast Refresh" tip
+  - Added *.c and *.h to "C++ Source" filter template
+  - Added *.ini to "Registry Dumps" rules
+
+- Bug Fixes
+  - Fixed freezes and crashes during file operations
+  - Scripts
+    - Fixed cutoff "#days" filter
+    - Fixed "CopyTo" command
+    - Config Wizard no longer reset after running scripts
+  - Fixed Copy To Folder's "Yes To All" handling
+  - "Open With Associated App" now uses default action instead of "Open"
+  - File viewer handles attempts to load directories better
+  - Fixed error when browsing with a zip file loaded
+  - Fixed FTP's handling of refreshes after a disconnect
+  - Fixed creating a directory on an FTP site after a disconnected
+  - Saving sessions with the name "<untitled>" handled better
+
+
+-----------------------------
+17-May-2002 Build 167 release
+-----------------------------
+
+- File Comparison Reports
+  - Added "Ignore Unimportant Differences" option
+  - Added "Differences With Context" filter
+  - Non-color printing now uses italics and bold
+
+- Added "Clone" button to rules page of Options dialog
+
+- Bug Fixes
+  - Fixed AV after moving files if content comparisons were on
+  - Fixed AV when closing scripting window
+  - "Open With..." stays active for plugin viewers when files in zips and
+    on ftp sites are selected
+  - Fixed infinite loop after FTP autoreconnect
+  - Nag dialog now appears less often early in trial period
+  - Fixed AV when running Config Wizard for first time
+  - Fixed "Can't find %s" error for shell extension option
+  - Fixed "C:\" v. "C:" path handling
+  - Fixed gap between toolbars when locked
+  - Fixed browse dialog in file viewer when file load failed
+  - Fixed default toolbar placement when canceling Config Wizard
+  - Minor file operations cleanup
+  - Fixed disjointed selection folder comparison operation
+  - Fixed display bug when closing a directory at bottom of folder list
+
+
+-----------------------------
+13-May-2002 Build 166 release
+-----------------------------
+
+- This is the first official release of Beyond Compare version 2.
